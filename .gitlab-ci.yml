@@ -19,7 +19,8 @@ validate:
 plan:
   stage: plan
   script:
-    - terraform plan
+    # Use https://github.com/ciscoecosystem/terraform-provider-aci/issues/4
+    - terraform plan -parallelism=1
   allow_failure: true
   dependencies:
     - validate
@@ -27,7 +28,8 @@ plan:
 apply:
   stage: apply
   script:
-    - terraform apply -input=false -auto-approve
+    # Use https://github.com/ciscoecosystem/terraform-provider-aci/issues/4
+    - terraform apply -input=false -auto-approve -parallelism=1
   dependencies:
     - plan
   when: manual
