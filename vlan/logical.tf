@@ -16,7 +16,7 @@ resource "aci_vrf" "vrf" {
   bd_enforced_enable     = "no"
   ip_data_plane_learning = "enabled"
   knw_mcast_act          = "permit"
-  name_alias             = "alias_vrf"
+  name_alias               = "alias_vrf"
   pc_enf_dir             = "egress"
   pc_enf_pref            = "unenforced"
 }
@@ -40,7 +40,7 @@ resource "aci_bridge_domain" "bd" {
   multi_dst_pkt_act           = "bd-flood"
   name_alias                  = "alias_bd"
   bridge_domain_type          = "regular"
-  unicast_route               = "no"
+  unicast_route               = var.unicast_route
   unk_mac_ucast_act           = "flood"
   unk_mcast_act               = "flood"
   vmac                        = "not-applicable"
@@ -68,7 +68,7 @@ resource "aci_application_epg" "epg" {
 resource "aci_subnet" "subnet" {
   bridge_domain_dn = aci_bridge_domain.bd.id
   ip               = var.gateway_address
-  preferred        = true
+  preferred        = "yes"
   scope            = "private"
-  description      = "This subject is created by terraform"
+  description      = "This subnet is created by terraform"
 }

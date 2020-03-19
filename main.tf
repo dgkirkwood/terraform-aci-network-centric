@@ -22,6 +22,7 @@ module vlan2 {
   source          = "./vlan"
   tenant_name     = "foo2"
   gateway_address = "10.10.2.1/24"
+  unicast_route = "yes"
 }
 
 module vlan3 {
