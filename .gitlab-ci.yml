@@ -1,19 +1,41 @@
 default:
     image: kecorbin/hashi-gitlab-runner:latest
     before_script:
-        - scripts/get_credentials.sh
-        - scripts/create_workspace.sh
+    - rm -rf .terraform
+    - terraform --version
+    - terraform init
 
 stages:
-    - provision
+  - validate
+  - plan
+  - apply
+  - destroy
 
-terraform_plan:
-  stage: provision
+validate:
+  stage: validate
   script:
-    - terraform plan 
-    
+    - terraform validate
 
-terraform_apply:
-  stage: provision
+plan:
+  stage: plan
+  script:
+    - terraform plan
+  allow_failure: true
+  dependencies:
+    - validate
+
+apply:
+  stage: apply
   script:
     - terraform apply -input=false -auto-approve
+  dependencies:
+    - plan
+  when: manual
+
+destroy:
+  stage: destroy
+  script:
+    - terraform destroy -auto-approve
+  dependencies:
+    - apply
+  when: manual
