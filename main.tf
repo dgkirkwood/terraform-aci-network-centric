@@ -1,4 +1,3 @@
-
 provider "aci" {
   # credentials
   url      = var.aci_url
@@ -29,4 +28,9 @@ module vlan3 {
   source          = "./vlan"
   tenant_name     = "foo3"
   gateway_address = "10.10.3.1/24"
+}
+module vlan4 {
+  source          = "./vlan"
+  tenant_name     = "foo4"
+  gateway_address = "10.10.4.1/24"
 }
