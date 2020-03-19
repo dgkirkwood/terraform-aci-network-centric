@@ -19,7 +19,7 @@ validate:
 plan:
   stage: plan
   script:
-    # Use https://github.com/ciscoecosystem/terraform-provider-aci/issues/4
+    # Using parallelism=1 per https://github.com/ciscoecosystem/terraform-provider-aci/issues/4
     - terraform plan -parallelism=1
   allow_failure: true
   dependencies:
@@ -37,7 +37,8 @@ apply:
 destroy:
   stage: destroy
   script:
-    - terraform destroy -auto-approve
+    # Using parallelism=1 per https://github.com/ciscoecosystem/terraform-provider-aci/issues/4
+    - terraform destroy -auto-approve -parallelism=1
   dependencies:
     - apply
   when: manual
