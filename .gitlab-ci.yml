@@ -1,0 +1,19 @@
+default:
+    image: kecorbin/hashi-gitlab-runner:latest
+    before_script:
+        - scripts/get_credentials.sh
+        - scripts/create_workspace.sh
+
+stages:
+    - provision
+
+terraform_plan:
+  stage: provision
+  script:
+    - terraform plan 
+    
+
+terraform_apply:
+  stage: provision
+  script:
+    - terraform apply -input=false -auto-approve
