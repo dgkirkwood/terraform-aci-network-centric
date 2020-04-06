@@ -8,5 +8,5 @@ variable "gateway_address" {
 
 variable "unicast_route" {
   description = "Enables or disables unicast routing for the BD (yes/no)"
-  default = "no"
+  default     = "no"
 }

@@ -16,7 +16,7 @@ resource "aci_vrf" "vrf" {
   bd_enforced_enable     = "no"
   ip_data_plane_learning = "enabled"
   knw_mcast_act          = "permit"
-  name_alias               = "alias_vrf"
+  name_alias             = "alias_vrf"
   pc_enf_dir             = "egress"
   pc_enf_pref            = "unenforced"
 }
