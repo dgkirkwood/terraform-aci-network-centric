@@ -54,7 +54,6 @@ resource "aci_application_epg" "epg" {
   annotation             = "tag_epg"
   exception_tag          = "0"
   flood_on_encap         = "disabled"
-  fwd_ctrl               = "none"
   has_mcast_source       = "no"
   is_attr_based_e_pg     = "no"
   match_t                = "AtleastOne"
