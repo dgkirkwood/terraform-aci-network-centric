@@ -27,6 +27,6 @@ module fabric_policies {
 
 module vlan {
   source          = "./vlan"
-  tenant_name     = "foo_dan"
+  tenant_name     = "foo_dan2"
   gateway_address = "10.10.1.1/24"
 }
