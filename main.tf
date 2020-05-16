@@ -21,8 +21,9 @@ provider "aci" {
 //   version  = "0.1.8"
 // }
 
-module fabric_policies {
-  source = "./fabric"
+module "fabric-policies" {
+  source  = "app.terraform.io/dk/fabric-policies/aci"
+  version = "0.0.1"
 }
 
 module vlan {
