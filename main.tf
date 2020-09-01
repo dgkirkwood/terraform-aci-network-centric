@@ -30,6 +30,6 @@ module "fabric-policies" {
 module "vlan-creation" {
   source  = "app.terraform.io/dk/vlan-creation/aci"
   version = "0.0.1"
-  tenant_name     = "foo_dan23"
+  tenant_name     = "foo_dan24"
   gateway_address = "10.10.1.1/24"
 }
